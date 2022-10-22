@@ -1,7 +1,7 @@
 {
   "name": "Проверка покупок",
   "description": "По всем ошибкам и вопросам можете писать в телегу @alex16091",
-  "version": "2.0",
+  "version": "2.1.0",
   "icons": {
     "32": "images/icon32x32.png",
     "48": "images/icon64x64.png"
