@@ -1,0 +1,77 @@
+#popup_block {
+    max-height: 435px;
+    /* font-size: 12; */
+    max-width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+}
+
+#popup_block>input[type="radio"] {
+    display: none;
+}
+
+#popup_block>div {
+    /* скрыть контент по умолчанию */
+    display: none;
+    padding: 5px 5px;
+    font-size: 12px;
+}
+
+#popup_block>label {
+    display: inline-block;
+    width: 114.5px;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    background-color: #f5f5f5;
+    border: 1px solid #e0e0e0;
+    font-size: 12px;
+    line-height: 1.5;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
+    cursor: pointer;
+    position: relative;
+    top: 1px;
+  }
+
+#popup_block>label:not(:first-of-type) {
+    border-left: none;
+}
+
+#popup_block>input[type="radio"]:checked+label {
+    background-color: #447bba!important;
+}
+
+#popup_block>label {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    background-color: rgba(174, 183, 194, 0.12);
+    border: 1px solid transparent;
+    padding: 2px 0px;
+    font-size: 14px;
+    line-height: 1.5;
+    border-radius: 4px;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+    cursor: pointer;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    width: 155px;
+    font-size: 15px;
+}
+
+#popup_block>label:hover {
+    background-color: rgba(174, 183, 194, 0.22);
+}
+
+#popup_block>label:first-of-type {
+    margin-left: 0;
+}
+
+#popup_block > input[type="radio"]:checked + label span,
+#popup_block > input[type="radio"]:checked + label span {
+    background-color: #fff!important;
+    color: #447bba!important;
+}
+

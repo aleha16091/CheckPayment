@@ -1,7 +1,7 @@
 {
   "name": "Проверка покупок",
   "description": "По всем ошибкам и вопросам можете писать в телегу @alex16091",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "icons": {
     "32": "images/icon32x32.png",
     "48": "images/icon64x64.png"
@@ -15,7 +15,7 @@
       "run_at": "document_end"
     }
   ],
-  "permissions": [ "tabs" ],
+  "permissions": [ "tabs", "storage" ],
   "web_accessible_resources": [
     {
       "resources": [ "js/script.js", "/images/Not-search-course.png", "/images/Not-search-mastergroup.png"],
@@ -24,5 +24,9 @@
   ],
   "externally_connectable": {
     "matches": ["https://vk.com/*"]
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "Проверка покупок"
   }
 }
