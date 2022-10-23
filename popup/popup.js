@@ -3,7 +3,6 @@ function add_to_storage() {
         console.log("Успешное добавление в локальное хранилище");
     }
     document.getElementById('popup_mastergroup').checked = true;
-    localStorage.["mastergroup"] = true;
     document.getElementById('popup_course').checked = false;
 
 }

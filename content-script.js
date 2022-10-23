@@ -28,7 +28,13 @@ Not_search_mastergroup.style.display = "none";
 
 function add_to_storage() {
     chrome.storage.local.set({"mastergroup": true, "course": false}), function(){
-        console.log("Успешное добавление в локальное хранилище");
+        let settings = document.createElement('div')
+        settings.setAttribute("id", "setting_block")
+        settings.setAttribute("style", "display: none;")
+        settings.innerHTML = 'mastergroup:' + result.mastergroup + '|course:' + result.course
+
+        let spam_block = document.getElementsByClassName('_ui_item_spam')
+        spam_block[0].after(settings)
     }
 }
 
@@ -39,19 +45,13 @@ chrome.storage.local.get([ "mastergroup" , "course" ], function(result) {
         add_to_storage()
     } else if ( result.mastergroup == false && result.course == false ) {
         add_to_storage()
-    }
-});
+    } else {
+        let settings = document.createElement('div')
+        settings.setAttribute("id", "setting_block")
+        settings.setAttribute("style", "display: none;")
+        settings.innerHTML = 'mastergroup:' + result.mastergroup + '|course:' + result.course
 
-window.addEventListener("message", function(event) {
-    // We only accept messages from ourselves
-    if (event.source != window)
-        return;
-
-    if (event.data.type && (event.data.type == "FROM_PAGE")) {
-        console.log("Content script received message: " + event.data.text);
-        chrome.storage.local.get([ "mastergroup" , "course" ], function(result) {
-            console.log("in ...", {"mastergroup": result.mastergroup, "course": result.course});
-            return {"mastergroup": result.mastergroup, "course": result.course}
-        })
+        let spam_block = document.getElementsByClassName('_ui_item_spam')
+        spam_block[0].after(settings)
     }
 });
