@@ -16,6 +16,7 @@
     }
   ],
   "permissions": [ "tabs", "storage" ],
+  "background": {"service_worker": "js/script.js"},
   "web_accessible_resources": [
     {
       "resources": [ "js/script.js", "/images/Not-search-course.png", "/images/Not-search-mastergroup.png"],
