@@ -23,12 +23,14 @@ chrome.storage.local.get([ "mastergroup" , "course" ], function(result) {
 
 document.getElementById('popup_mastergroup').onclick = function() {
     chrome.storage.local.set({"mastergroup": true, "course": false}), function(){
+        browser.action.setBadgeText({ 'text': 'up!' })
         console.log("Успешное добавление в локальное хранилище");
     }
 }
 
 document.getElementById('popup_course').onclick = function() {
     chrome.storage.local.set({"mastergroup": false, "course": true}), function(){
+        browser.action.setBadgeText({ 'text': 'up!' })
         console.log("Успешное добавление в локальное хранилище");
     }
 }
