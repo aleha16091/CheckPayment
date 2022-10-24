@@ -1,30 +1,34 @@
-var script = document.createElement('script');
-script.src = chrome.runtime.getURL('js/script.js');
-script.onload = function() {
-    this.remove();
-};
-(document.head || document.documentElement).appendChild(script);
+function add_to_dom() {
+    var script = document.createElement('script');
+    script.src = chrome.runtime.getURL('js/script.js');
+    script.onload = function() {
+        this.remove();
+    };
+    (document.head || document.documentElement).appendChild(script);
 
-var css = document.createElement('link');
-css.src = chrome.runtime.getURL('insert.css');
-css.rel = 'stylesheet'
-css.type = 'text/css'
-css.onload = function() {
-    this.remove();
-};
-(document.head).appendChild(css)
+    var css = document.createElement('link');
+    css.src = chrome.runtime.getURL('insert.css');
+    css.rel = 'stylesheet'
+    css.type = 'text/css'
+    css.onload = function() {
+        this.remove();
+    };
+    (document.head).appendChild(css)
 
-var Not_search_course = document.createElement('div')
-Not_search_course.setAttribute("id", "no-pay-courses")
-Not_search_course.innerText = chrome.runtime.getURL("/images/Not-search-course.png");
-Not_search_course.style.display = "none";
-(document.head).appendChild(Not_search_course)
+    var Not_search_course = document.createElement('div')
+    Not_search_course.setAttribute("id", "no-pay-courses")
+    Not_search_course.innerText = chrome.runtime.getURL("/images/Not-search-course.png");
+    Not_search_course.style.display = "none";
+    (document.head).appendChild(Not_search_course)
 
-var Not_search_mastergroup = document.createElement('div')
-Not_search_mastergroup.setAttribute("id", "no-pay-mastergroups")
-Not_search_mastergroup.innerText = chrome.runtime.getURL("/images/Not-search-mastergroup.png");
-Not_search_mastergroup.style.display = "none";
-(document.head).appendChild(Not_search_mastergroup)
+    var Not_search_mastergroup = document.createElement('div')
+    Not_search_mastergroup.setAttribute("id", "no-pay-mastergroups")
+    Not_search_mastergroup.innerText = chrome.runtime.getURL("/images/Not-search-mastergroup.png");
+    Not_search_mastergroup.style.display = "none";
+    (document.head).appendChild(Not_search_mastergroup)
+}
+
+add_to_dom()
 
 function add_to_storage() {
     chrome.storage.local.set({"mastergroup": true, "course": false}), function(){
@@ -55,3 +59,36 @@ chrome.storage.local.get([ "mastergroup" , "course" ], function(result) {
         spam_block[0].after(settings)
     }
 });
+
+
+function check_update() {
+    chrome.action.setBadgeBackgroundColor({ color: '#00FF00' })
+    chrome.action.setBadgeText({ text: 'up!' })
+           
+    console.log(1)
+}
+
+function tick() {
+    let next = new Date(Date.now() + 60 * 1000);
+    // next.setMinutes(0);
+    next.setSeconds(0);
+    next.setMilliseconds(0);
+
+    localStorage.savedTimestamp = next.getTime();
+
+    check_update();
+}
+
+function checkTimestamp() {
+    if (localStorage.savedTimestamp) {
+        let timestamp = parseInt(localStorage.savedTimestamp);
+
+        if (Date.now() >= timestamp) {
+            tick();
+        }
+    } else {
+        tick();
+    }
+}
+
+setInterval(checkTimestamp, 10000);

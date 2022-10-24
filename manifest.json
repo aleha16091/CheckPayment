@@ -1,7 +1,7 @@
 {
   "name": "Проверка покупок",
   "description": "По всем ошибкам и вопросам можете писать в телегу @alex16091",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "icons": {
     "32": "images/icon32x32.png",
     "48": "images/icon64x64.png"
@@ -26,6 +26,10 @@
     "matches": ["https://vk.com/*"]
   },
   "action": {
+    "default_icon": {
+      "32": "images/icon32x32.png",
+      "48": "images/icon64x64.png"
+    },
     "default_popup": "popup/popup.html",
     "default_title": "Проверка покупок"
   }
