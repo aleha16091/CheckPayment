@@ -10,16 +10,16 @@
   "content_scripts": [
     {
       "matches": [ "https://vk.com/*" ],
-      "js": ["content-script.js"],
-      "css": [ "insert.css" ],
+      "js": ["js/content-script.js"],
+      "css": [ "css/insert.css" ],
       "run_at": "document_end"
     }
   ],
   "permissions": [ "tabs", "storage" ],
-  "background": {"service_worker": "js/script.js"},
+  "background": {"service_worker": "js/background.js"},
   "web_accessible_resources": [
     {
-      "resources": [ "js/script.js", "/images/Not-search-course.png", "/images/Not-search-mastergroup.png"],
+      "resources": [ "js/insert.js", "/images/Not-search-course.png", "/images/Not-search-mastergroup.png"],
       "matches": [ "https://vk.com/*" ]
     }
   ],
