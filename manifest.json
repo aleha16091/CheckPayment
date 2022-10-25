@@ -6,7 +6,11 @@
     "32": "images/icon32x32.png",
     "48": "images/icon64x64.png"
   },
+  "permissions": [ "tabs", "storage", "https://github.com/*", "https://github.com/" ],
   "manifest_version": 3,
+  "background": {
+    "service_worker": "js/background.js"
+  },
   "content_scripts": [
     {
       "matches": [ "https://vk.com/*" ],
@@ -15,17 +19,12 @@
       "run_at": "document_end"
     }
   ],
-  "permissions": [ "tabs", "storage" ],
-  "background": {"service_worker": "js/background.js"},
   "web_accessible_resources": [
     {
       "resources": [ "js/insert.js", "/images/Not-search-course.png", "/images/Not-search-mastergroup.png"],
       "matches": [ "https://vk.com/*" ]
     }
   ],
-  "externally_connectable": {
-    "matches": ["https://vk.com/*"]
-  },
   "action": {
     "default_icon": {
       "32": "images/icon32x32.png",
@@ -35,3 +34,4 @@
     "default_title": "Проверка покупок"
   }
 }
+
